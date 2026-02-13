@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Typing Speed Meter</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+
+  <!-- ── Header (always visible) ───────────────────────────── -->
+  <header class="header">
+    <div class="header-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+           stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="6" width="20" height="12" rx="2"/>
+        <path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/>
+      </svg>
+    </div>
+    <div class="header-text">
+      <h1>Typing Speed Meter</h1>
+      <p>Real-time WPM &amp; CPM tracking</p>
+    </div>
+  </header>
+
+  <!-- ── Tab bar ───────────────────────────────────────────── -->
+  <div class="tab-bar" role="tablist">
+    <button class="tab active" id="tabLive"    role="tab" aria-selected="true">Live</button>
+    <button class="tab"        id="tabHistory" role="tab" aria-selected="false">History</button>
+  </div>
+
+  <!-- ── Live panel ────────────────────────────────────────── -->
+  <div class="panel" id="panelLive" role="tabpanel">
+
+    <div class="status-bar">
+      <span class="status-dot"   id="statusDot"></span>
+      <span class="status-label" id="statusLabel">Not measuring</span>
+    </div>
+
+    <div class="metrics">
+      <div class="metric-card wpm-card">
+        <div class="metric-value" id="wpmValue">&#8212;</div>
+        <div class="metric-label">WPM</div>
+        <div class="metric-sub">words / min</div>
+      </div>
+      <div class="metric-card cpm-card">
+        <div class="metric-value" id="cpmValue">&#8212;</div>
+        <div class="metric-label">CPM</div>
+        <div class="metric-sub">chars / min</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-start" id="toggleBtn">
+        <svg class="btn-icon" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M4 2.5v11l9-5.5z"/>
+        </svg>
+        Start Measuring
+      </button>
+    </div>
+
+    <footer class="footer-stats">
+      <div class="footer-stat">
+        <div class="footer-stat-label">Keys</div>
+        <div class="footer-stat-value" id="keystrokesValue">0</div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-stat">
+        <div class="footer-stat-label">Backspaces</div>
+        <div class="footer-stat-value" id="backspacesValue">0</div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-stat">
+        <div class="footer-stat-label">Pasted</div>
+        <div class="footer-stat-value" id="pastedValue">0</div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-stat">
+        <div class="footer-stat-label">Peak</div>
+        <div class="footer-stat-value" id="peakValue">&#8212;</div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-stat">
+        <div class="footer-stat-label">Elapsed</div>
+        <div class="footer-stat-value" id="elapsedValue">0s</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ── History panel ─────────────────────────────────────── -->
+  <div class="panel hidden" id="panelHistory" role="tabpanel">
+
+    <div class="sessions-toolbar">
+      <span class="sessions-count" id="sessionsCount">0 sessions</span>
+      <button class="btn-clear" id="clearSessions">Clear all</button>
+    </div>
+
+    <div class="sessions-empty hidden" id="sessionsEmpty">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+      </svg>
+      <p>No sessions yet.</p>
+      <p>Start measuring to save your typing history.</p>
+    </div>
+
+    <div class="sessions-list" id="sessionsList"></div>
+
+  </div>
+
+  <!-- ── Privacy notice (always visible) ──────────────────── -->
+  <div class="privacy-notice">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+    </svg>
+    <span>We never store what you type — only counts</span>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
