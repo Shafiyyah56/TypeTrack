@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# Chrome Extension packaging
+*.pem
+*.crx
+*.zip
+
+# Logs
+*.log
